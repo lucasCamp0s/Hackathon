@@ -1,4 +1,5 @@
 const Usuario = require('../models/Usuario');
+const Disciplina = require('../models/Disciplina');
 
 /**
  * paramentros para cadastro de um novo usuario
@@ -38,7 +39,7 @@ module.exports = {
             descricao,
             telefone,
             dataNascimento} = req.body;
-        
+        const {disciplina_id} = req.headers;
          
             const user = await Usuario.findOne().or([{matricula,email}]);
 
@@ -71,7 +72,8 @@ module.exports = {
                 throw new Error('Digite uma senha com no mínimo 6 caracteres');
             }
 
-            const novoUsuario = await new Usuario({
+    
+           const novoUsuario = await new Usuario({
                 matricula,
                 tipo,
                 ativo,
@@ -82,8 +84,23 @@ module.exports = {
                 telefone,
                 dataNascimento,
             }).save();
-            return res.json(novoUsuario);            
+            return res.json(novoUsuario);       
             
+    },
+
+    async cadastrarDisciplinas(req,res){        
+
+        const {usuario_id} = req.headers;
+        const {disciplina_id} = req.headers;
+
+        if(!usuario_id || ! disciplina_id){
+            return res.json({"erro":"Todos os campos são obrigatórios"});
+        }
+        await Disciplina.findOneAndUpdate(
+        {_id:disciplina_id},{$push:{alunos : usuario_id}}
+        )
+        await Usuario.findByIdAndUpdate({_id:usuario_id},{$push:{disciplinas : disciplina_id}});
+        return res.json(Usuario);
     }
 
     

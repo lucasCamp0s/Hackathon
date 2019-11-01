@@ -29,5 +29,6 @@ routes.post('/disciplina/cadastrarDisciplina', DisciplinaController.Store);
 routes.get('/disciplina/listAll',DisciplinaController.listDisciplinas);
 routes.post('/serie/cadastrarDisciplina',SerieController.cadastrarDisciplina);
 routes.post('/cadastrarAgenda',upload.single('image'),AgendaController.Strore);
+routes.put('/cadastrarDisciplina',UsuarioController.cadastrarDisciplinas);
 
 module.exports = routes;
