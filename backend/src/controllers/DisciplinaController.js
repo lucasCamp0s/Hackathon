@@ -5,7 +5,7 @@ const Serie = require('../models/Serie');
 module.exports = {
     async Store(req, res){
         const { nome } = req.body;
-        const { professor_id } = req.body;
+        const { professor_id } = req.headers;
 
         const newDisciplina = await new Disciplina({
             nome,
