@@ -7,6 +7,7 @@ const UploadConfig = require('./config/upload');
 const ComentarioController = require('./controllers/ComentarioController');
 const SerieController = require('./controllers/SerieControler');
 const DisciplinaController = require('./controllers/DisciplinaController');
+const AgendaController = require('./controllers/AgendaController');
 const multer = require('multer');
 //importando bibliotecas
 const express = require('express');
@@ -27,4 +28,6 @@ routes.get('/serie/listAll',SerieController.listAll);
 routes.post('/disciplina/cadastrarDisciplina', DisciplinaController.Store);
 routes.get('/disciplina/listAll',DisciplinaController.listDisciplinas);
 routes.post('/serie/cadastrarDisciplina',SerieController.cadastrarDisciplina);
+routes.post('/cadastrarAgenda',upload.single('image'),AgendaController.Strore);
+
 module.exports = routes;
