@@ -41,6 +41,10 @@ const UsuarioSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
+    serie:{
+        type : mongoose.Schema.ObjectId,
+        ref: "Turma",
+    },
     passwordResetToken:String,
     image : String,
     coverImagePublicId : String,

@@ -1,5 +1,6 @@
 const Serie = require('../models/Serie');
 const Disciplina = require('../models/Disciplina');
+const Usuario = require('../models/Usuario');
 
 /**
  * classe recebe referencias de disciplinas para fazer o cadastro
@@ -37,8 +38,8 @@ module.exports = {
      * cadastrando uma disciplina no vetor de disciplina      
      */
     async cadastrarDisciplina(req,res){
-        const {serie_id, disciplina_id} = req.headers;  
-        if(!serie_id || !disciplina_id){
+        const {serie_id, disciplina_id,usuario_id} = req.headers;  
+        if(!serie_id || !disciplina_id || !usuario_id){
             return res.json({"msg":"Todos os campos são requeridos"});
         }
         const disciplina = await Disciplina.findOne({_id:disciplina_id});
@@ -53,7 +54,7 @@ module.exports = {
 
         await Serie.findByIdAndUpdate({_id:serie_id},{$push:{disciplinas:disciplina_id}});
         await Disciplina.findByIdAndUpdate({_id:disciplina_id},{$push:{series:serie_id}});
-        
+        //await Usuario.findByIdAndUpdate({_id:usuario_id},{$push:{disciplinas:disciplina_id}});
         return res.json(disciplina);
     }
 

@@ -8,6 +8,7 @@ const ComentarioController = require('./controllers/ComentarioController');
 const SerieController = require('./controllers/SerieControler');
 const DisciplinaController = require('./controllers/DisciplinaController');
 const AgendaController = require('./controllers/AgendaController');
+const TurmaController = require('./controllers/TurmaController');
 const multer = require('multer');
 //importando bibliotecas
 const express = require('express');
@@ -28,7 +29,12 @@ routes.get('/serie/listAll',SerieController.listAll);
 routes.post('/disciplina/cadastrarDisciplina', DisciplinaController.Store);
 routes.get('/disciplina/listAll',DisciplinaController.listDisciplinas);
 routes.post('/serie/cadastrarDisciplina',SerieController.cadastrarDisciplina);
+routes.get('/turma/listAll',TurmaController.listTurmas);
 routes.post('/cadastrarAgenda',upload.single('image'),AgendaController.Strore);
-routes.put('/cadastrarDisciplina',UsuarioController.cadastrarDisciplinas);
+routes.get('/buscaEscola',UsuarioController.buscarEscolaAluno);
+//routes.put('/cadastrarDisciplina',UsuarioController.cadastrarDisciplinas);
+routes.put('/cadastrarDisciplinaTurma',UsuarioController.cadastrarDisciplinasTurma);
+routes.put('/cadastrarDisciplinaSerie',SerieController.cadastrarDisciplina);
+routes.put('/cadastrarTurmaSerie',TurmaController.cadastrarSerie);
 
 module.exports = routes;
