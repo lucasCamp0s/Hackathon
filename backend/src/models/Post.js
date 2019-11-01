@@ -6,8 +6,7 @@ const mongoose = require('mongoose');
  */
 const PostSchema = new mongoose.Schema({
    image : String,
-   mensagem : String,
-   image : String,
+   mensagem : String, 
    autor : {
        type : mongoose.Schema.Types.ObjectId,
        ref : 'Usuario',
