@@ -59,6 +59,8 @@ const UsuarioSchema = new mongoose.Schema({
     ]
 
 },
+//colocar as notas
+//colocar as faltas
 {
     timestamps:true,
 });

@@ -35,4 +35,8 @@ module.exports = {
             
             return res.json(newPost);      
     },
+    async listAll(req,res){
+        const posts = await Post.find({});
+        return res.json(posts);
+    },
 }
