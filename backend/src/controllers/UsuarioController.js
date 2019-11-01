@@ -1,5 +1,6 @@
 const Usuario = require('../models/Usuario');
 const Disciplina = require('../models/Disciplina');
+const bcrypt = require('bcryptjs');
 
 /**
  * paramentros para cadastro de um novo usuario
@@ -14,6 +15,23 @@ const Disciplina = require('../models/Disciplina');
  * @param {String} dataNascimento 
  */
 module.exports = {
+    async Authenticate(req, res){
+        const { matricula, password } = req.body;
+
+        const { matricula, password } = req.body;
+
+        const user = await Usuario.findOne({ matricula }).select('+password');
+    
+        if(!user)
+            return res.status(400).send({ error: 'Usuario nao encontrado' });
+        
+        if(!await bcrypt.compare(password, user.password))
+            return res.status(400).send({ error: 'Senha invalida'});
+        
+        user.password = undefined;
+    
+        res.json(user, user.tipo);
+    },
 
     async buscarUsuario(req,res){
         const {_id} = req.headers;
