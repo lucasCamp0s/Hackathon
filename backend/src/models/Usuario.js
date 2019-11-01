@@ -53,18 +53,26 @@ const UsuarioSchema = new mongoose.Schema({
     ],
     comentarios : [
         {
-          type : mongoose.Schema.ObjectId,
+          type : mongoose.Schema.Types.ObjectId,
          ref : 'Comentario',
         },
     ],
     disciplinas : [{
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Disciplina',
     }],
     faltas: [{
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Falta',
-    }]
+    }],
+    vacinas: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vacina',
+    }],
+    saudes : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Saude'
+    }
 },
 //colocar as notas
 //colocar as faltas
