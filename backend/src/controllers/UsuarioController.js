@@ -14,9 +14,15 @@ const Usuario = require('../models/Usuario');
  */
 module.exports = {
 
-    async Index(req,res){
+    async buscarUsuario(req,res){
         const {_id} = req.headers;
         const user = await Usuario.findOne({_id});
+
+        return res.json(user);
+    },
+    async listAll(req,res){
+        const {_id} = req.headers;
+        const user = await Usuario.find({});
 
         return res.json(user);
     },
