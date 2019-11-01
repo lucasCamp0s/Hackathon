@@ -43,7 +43,7 @@ module.exports = {
             return res.json({"msg":"Todos os campos são requeridos"});
         }
         const disciplina = await Disciplina.findOne({_id:disciplina_id});
-        const serie = await Serie.findOne({_id:serie});
+        const serie = await Serie.findOne({_id:serie_id});
         
         if(!disciplina){
             return res.json({"msg":"Disciplina não encontrada"});
@@ -55,7 +55,7 @@ module.exports = {
         await Serie.findByIdAndUpdate({_id:serie_id},{$push:{disciplinas:disciplina_id}});
         await Disciplina.findByIdAndUpdate({_id:disciplina_id},{$push:{series:serie_id}});
         
-        return res.json()
+        return res.json(disciplina);
     }
 
 
