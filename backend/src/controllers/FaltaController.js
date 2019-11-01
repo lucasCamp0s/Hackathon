@@ -1,7 +1,5 @@
 const Falta = require('../models/Falta');
-const Disciplina = require('../models/Disciplina');
 const Usuario = require('../models/Usuario');
-const Serie = require('../models/Serie');
 
 module.exports = {
     async Store(req, res){

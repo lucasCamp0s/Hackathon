@@ -1,5 +1,4 @@
 const Saude = require('../models/Saude');
-const Post = require('../models/Post');
 const Usuario = require('../models/Usuario');
 
 module.exports = {

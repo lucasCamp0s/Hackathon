@@ -76,7 +76,11 @@ const UsuarioSchema = new mongoose.Schema({
     turmas :{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Turma',
-    }
+    },
+    notas: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Nota',
+    }]
 },
 //colocar as notas
 //colocar as faltas

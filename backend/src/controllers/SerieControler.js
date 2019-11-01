@@ -1,5 +1,4 @@
 const Serie = require('../models/Serie');
-
 const Disciplina = require('../models/Disciplina');
 
 /**
