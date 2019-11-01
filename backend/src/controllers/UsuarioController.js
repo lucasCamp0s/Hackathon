@@ -18,8 +18,6 @@ module.exports = {
     async Authenticate(req, res){
         const { matricula, password } = req.body;
 
-        const { matricula, password } = req.body;
-
         const user = await Usuario.findOne({ matricula }).select('+password');
     
         if(!user)
