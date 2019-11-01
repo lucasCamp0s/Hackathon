@@ -71,7 +71,11 @@ const UsuarioSchema = new mongoose.Schema({
     }],
     saudes : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Saude'
+        ref: 'Saude',
+    },
+    turmas :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Turma',
     }
 },
 //colocar as notas
